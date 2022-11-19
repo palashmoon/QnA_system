@@ -26,6 +26,15 @@ class Preprocessing:
         # prepare a csv file
         self.prepare_csvfile(train_data)
     
+    def clean_text(self, text):
+        # lowercase
+        x = text.lower()
+        # remove puntuation
+        res = re.sub('[^a-zA-Z0-9]','',x)
+        res = res.strip()
+        # tokenize
+        return res
+    
     def prepare_csvfile(self, train_data):
         context_list = []
         question_list = []
@@ -42,7 +51,12 @@ class Preprocessing:
                 a = []
                 for question in qas:
                     questions = question["question"]
+                    # clean question
+                    questions = self.clean_text(questions)
+                    # remove punctiation
                     answer_text = question["answers"][0]["text"]
+                    # clean answer text
+                    answer_text = self.clean_text(answer_text)
                     answer_start = question["answers"][0]["answer_start"]
                     q.append(questions)
                     a.append(answer_text)

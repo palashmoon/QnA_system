@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA-System</title>
+    <style>
+
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+</head>
+
+<body>
+    <h1>Question Answering System</h1>
+    {% csrf_token %}
+    <form action="predictAnswer" method="post" name="myform">
+        <label for="paragraph">Enter the paragraph : </label><br>
+        <textarea name="input" id="paragraph" cols="80" rows="10"></textarea><br><br>
+        <label for="question">Enter a question : </label><br>
+        <input type="text" name="question" id="question" size="67"><br><br>
+        <input type="submit" value="submit" id="btn">
+    </form>
+    <br><br>
+
+    <div>
+        <div id="printpara">Paragraph is : {{paragraph}}</div><br><br>
+        <div id="printq">Question is : {{question}}</div><br><br>
+        <div>Answer is : {{answer}}</div>
+    </div>
+    
+
+    
+</body>
+
+</html>
